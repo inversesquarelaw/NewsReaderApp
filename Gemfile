@@ -7,7 +7,14 @@ gem 'rails', '3.2.13'
 
 gem 'sqlite3'
 gem 'simple-rss'
+gem 'backbone-on-rails'
+gem 'ejs'
 require 'open-uri'
+
+group :development do
+  gem "better_errors"
+end
+gem "binding_of_caller"
 
 # Gems used only for assets and not required
 # in production environments by default.
