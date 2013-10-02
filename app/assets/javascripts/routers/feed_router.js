@@ -11,12 +11,12 @@ NewReader.Routers.FeedRouter = Backbone.Router.extend({
     "feeds/:feed_id/entries/:id": "entry"
   },
 
-  index: function(){
+  index: function() {
     this.installSidebar();
     this.$rootEl.html("");
   },
 
-  show: function(id){
+  show: function(id) {
     var feedShowView = new NewReader.Views.FeedShow({
       model: this.feeds.get(id)
     });
@@ -25,7 +25,7 @@ NewReader.Routers.FeedRouter = Backbone.Router.extend({
     this.$rootEl.html(feedShowView.render().$el);
   },
 
-  entry: function(feed_id, id){
+  entry: function(feed_id, id) {
     var entry = this.feeds.get(feed_id).get('entries').get(id);
     var entryShowView = new NewReader.Views.EntryShow({
       model: entry
@@ -35,7 +35,7 @@ NewReader.Routers.FeedRouter = Backbone.Router.extend({
     this.$rootEl.html(entryShowView.render().$el)
   },
 
-  installSidebar: function(){
+  installSidebar: function() {
     var feedsIndexView = new NewReader.Views.FeedsIndex({
       collection: this.feeds
     });

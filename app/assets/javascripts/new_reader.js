@@ -9,12 +9,12 @@ window.NewReader = {
     var feeds = new NewReader.Collections.Feeds()
 
     feeds.fetch({
-      success: function(){
+      success: function() {
         console.log(feeds)
         new NewReader.Routers.FeedRouter(feeds, $rootEl, $sidebar);
         Backbone.history.start();
       },
-      error: function(){
+      error: function() {
         console.log("Failed to fetch.");
       }
     })
@@ -22,6 +22,6 @@ window.NewReader = {
   }
 };
 
-$(document).ready(function(){
+$(document).ready(function() {
   NewReader.initialize();
 });
