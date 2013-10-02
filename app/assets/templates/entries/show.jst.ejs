@@ -1,15 +1,6 @@
-<!-- create_table "entries", :force => true do |t|
-  t.string   "guid",         :null => false
-  t.string   "link",         :null => false
-  t.string   "title",        :null => false
-  t.datetime "published_at", :null => false
-  t.integer  "feed_id",      :null => false
-  t.text     "json",         :null => false
-  t.datetime "created_at",   :null => false
-  t.datetime "updated_at",   :null => false
-end -->
-
 <h1><a href="<%= entry.escape("link") %>"  target="_blank"><%= entry.escape("title") %></a></h1>
+
 <p><%= entry.get("published_at") %></p>
+
 <% var link = "#/feeds/" + entry.get("feed_id")%>
 <a href='<%= link %>'>Back to feed</a>

@@ -6,8 +6,8 @@ window.NewReader = {
   initialize: function() {
     var $rootEl = $('#content');
     var $sidebar = $('#sidebar')
-    console.log('Fetching feeds')
     var feeds = new NewReader.Collections.Feeds()
+
     feeds.fetch({
       success: function(){
         console.log(feeds)

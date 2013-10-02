@@ -26,10 +26,6 @@ NewReader.Routers.FeedRouter = Backbone.Router.extend({
   },
 
   entry: function(feed_id, id){
-    console.log("inFORMATION")
-    console.log(this.feeds);
-    console.log(this.feeds.get(feed_id))
-    console.log(this.feeds.get(feed_id).get('entries'))
     var entry = this.feeds.get(feed_id).get('entries').get(id);
     var entryShowView = new NewReader.Views.EntryShow({
       model: entry
