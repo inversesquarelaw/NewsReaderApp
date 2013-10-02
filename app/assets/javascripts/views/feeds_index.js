@@ -6,7 +6,7 @@ NewReader.Views.FeedsIndex = Backbone.View.extend({
     "click .add-button" : "add"
   },
 
-  initialize: function(){
+  initialize: function () {
     var that = this;
     var renderCallback = that.render.bind(that);
     that.listenTo(that.collection, 'add', renderCallback);

@@ -5,14 +5,14 @@ NewReader.Views.FeedShow = Backbone.View.extend({
     "click .refresh-entries" : "refresh"
   },
 
-  render: function(){
+  render: function () {
     var that = this;
     that.$el.html(that.template({feed: that.model}));
 
     return that;
   },
 
-  refresh: function(){
+  refresh: function () {
     var that = this;
     var renderCallback = that.render.bind(that)
     that.model.get("entries").fetch({
