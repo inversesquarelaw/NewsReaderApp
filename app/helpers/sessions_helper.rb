@@ -3,7 +3,7 @@ module SessionsHelper
     session[:token] = user.reset_session_token!
   end
 
-  def logout
+  def logout!
     current_user.reset_session_token!
   end
 
@@ -13,5 +13,9 @@ module SessionsHelper
 
   def logged_in?
     !!current_user
+  end
+
+  def require_user!
+    redirect_to new_session_url unless logged_in?
   end
 end

@@ -8,6 +8,8 @@ window.NewReader = {
     var $sidebar = $('#sidebar');
     var feeds = new NewReader.Collections.Feeds();
 
+    // install the sidebar external to the router as it is
+    // independent of any routing
     var feedsIndexView = new NewReader.Views.FeedsIndex({
       collection: feeds
     });
@@ -24,4 +26,5 @@ window.NewReader = {
     });
   }
 };
+// boot the app when the document is ready
 $(NewReader.initialize);

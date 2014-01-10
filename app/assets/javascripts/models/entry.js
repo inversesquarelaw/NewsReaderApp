@@ -1,3 +1,1 @@
-NewReader.Models.Entry = Backbone.Model.extend({
-
-});
+NewReader.Models.Entry = Backbone.Model.extend({});

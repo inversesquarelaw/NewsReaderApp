@@ -1,24 +1,27 @@
 NewReader.Views.FeedShow = Backbone.View.extend({
   template: JST['feeds/show'],
-  className: "feed-show",
+  className: 'feed-show',
+
+  initialize: function (attribute) {
+    this.listenTo(this.model.get('entries'), 'add', this.render);
+  },
+
   events: {
-    "click .refresh-entries" : "refresh"
+    'click .refresh-entries': 'refresh'
   },
 
   render: function () {
-    var that = this;
-    that.$el.html(that.template({feed: that.model}));
-
-    return that;
+    var content = this.template({
+      feed: this.model
+    });
+    this.$el.html(content);
+    return this;
   },
 
   refresh: function () {
-    var that = this;
-    var renderCallback = that.render.bind(that)
-    that.model.get("entries").fetch({
-      success: renderCallback,
-      error: function(){
-        console.log("Could not refresh view for some reason");
+    this.model.get('entries').fetch({
+      error: function () {
+        console.log('Could not refresh view for some reason');
       }
     });
   }

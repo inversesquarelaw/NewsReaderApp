@@ -1,4 +1,5 @@
 class FeedsController < ApplicationController
+  before_filter :require_user!
   def index
     @feeds = Feed.includes(:entries)
     respond_to do |format|

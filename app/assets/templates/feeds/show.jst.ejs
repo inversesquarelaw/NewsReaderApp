@@ -6,11 +6,8 @@
 
 <ul>
   <% _.each(feed.get('entries').models, function(entry) { %>
-
-    <% var link = "#/feeds/" + entry.get("feed_id") + "/entries/" +  entry.get("id") %>
     <li>
-      <a href='<%= link %>'><%= entry.escape('title') %></a>
+      <a href='#<%= entry.url() %>'><%= entry.escape('title') %></a>
     </li>
-
   <% }); %>
 </ul>
