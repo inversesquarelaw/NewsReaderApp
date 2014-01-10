@@ -3,25 +3,25 @@ window.NewReader = {
   Collections: {},
   Views: {},
   Routers: {},
-  initialize: function() {
+  initialize: function () {
     var $rootEl = $('#content');
-    var $sidebar = $('#sidebar')
-    var feeds = new NewReader.Collections.Feeds()
+    var $sidebar = $('#sidebar');
+    var feeds = new NewReader.Collections.Feeds();
+
+    var feedsIndexView = new NewReader.Views.FeedsIndex({
+      collection: feeds
+    });
+    $sidebar.html(feedsIndexView.render().$el);
 
     feeds.fetch({
-      success: function() {
-        console.log(feeds)
-        new NewReader.Routers.FeedRouter(feeds, $rootEl, $sidebar);
+      success: function () {
+        new NewReader.Routers.FeedRouter(feeds, $rootEl);
         Backbone.history.start();
       },
-      error: function() {
-        console.log("Failed to fetch.");
+      error: function () {
+        console.log('Failed to fetch.');
       }
-    })
-
+    });
   }
 };
-
-$(document).ready(function() {
-  NewReader.initialize();
-});
+$(NewReader.initialize);

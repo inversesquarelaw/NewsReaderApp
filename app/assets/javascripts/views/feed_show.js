@@ -20,7 +20,6 @@ NewReader.Views.FeedShow = Backbone.View.extend({
       error: function(){
         console.log("Could not refresh view for some reason");
       }
-    })
+    });
   }
-
 });

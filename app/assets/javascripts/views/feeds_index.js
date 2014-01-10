@@ -1,31 +1,27 @@
 NewReader.Views.FeedsIndex = Backbone.View.extend({
   template: JST['feeds/index'],
-  tagName: "ul",
-  className: "feeds-index",
+  tagName: 'ul',
+  className: 'feeds-index',
+
   events: {
     "click .add-button" : "add"
   },
 
   initialize: function () {
-    var that = this;
-    var renderCallback = that.render.bind(that);
-    that.listenTo(that.collection, 'add', renderCallback);
-    that.listenTo(that.collection, 'remove', renderCallback);
+    this.listenTo(this.collection, 'add remove', this.render);
   },
 
   render: function () {
+    console.log("rendering sidebar view");
     var that = this;
     that.$el.html(that.template({
       feeds: that.collection
     }));
-    return that;
+    return this;
   },
 
   add: function(event){
-    var that = this;
-    var newUrl = $('input[name=feed\\[url\\]]').val()
-    that.collection.create({url: newUrl}, {wait:true});
+    var newUrl = $('input[name=feed\\[url\\]]').val();
+    this.collection.create({url: newUrl}, {wait:true});
   }
-})
-
-
+});

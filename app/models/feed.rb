@@ -2,6 +2,12 @@ class Feed < ActiveRecord::Base
   attr_accessible :title, :url
 
   has_many :entries, :dependent => :destroy
+  has_many :user_feeds
+  has_many :users, :through => :user_feeds
+
+  def has_favorited?(user_id)
+    !users.find_by_id(user_id).nil?
+  end
 
   def self.find_or_create_by_url(url)
     feed = Feed.find_by_url(url)
