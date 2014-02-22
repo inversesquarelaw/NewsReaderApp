@@ -9,7 +9,7 @@ class FeedsController < ApplicationController
   end
 
   def create
-    feed = Feed.find_or_create_by_url(params[:feed][:url])
+    feed = Feed.find_or_create_by_url(feed_params[:url])
     if feed
       feed.reload
       render :json => feed.to_json(include: :entries)
@@ -18,4 +18,9 @@ class FeedsController < ApplicationController
     end
   end
 
+
+  private
+  def feed_params
+    params.require(:feed).permit(:title, :url)
+  end
 end
