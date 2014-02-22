@@ -1,5 +1,6 @@
 class FeedsController < ApplicationController
   before_filter :require_user!
+
   def index
     @feeds = Feed.includes(:entries)
     respond_to do |format|
@@ -9,7 +10,8 @@ class FeedsController < ApplicationController
   end
 
   def create
-    feed = Feed.find_or_create_by_url(feed_params[:url])
+    feed = Feed.find_or_create_by_url(params[:feed][:url])
+
     if feed
       feed.reload
       render :json => feed.to_json(include: :entries)
@@ -18,9 +20,9 @@ class FeedsController < ApplicationController
     end
   end
 
-
   private
   def feed_params
     params.require(:feed).permit(:title, :url)
   end
 end
+

@@ -46,8 +46,11 @@ end
 gem 'simple-rss'
 gem 'backbone-on-rails'
 gem 'ejs'
-  gem "better_errors"
-gem "binding_of_caller"
+group :development do
+  gem 'debugger'
+  gem 'better_errors'
+  gem 'binding_of_caller'
+end
 gem 'bcrypt-ruby', '~> 3.0.0'
 group :development, :test do
   gem 'rspec-rails'
